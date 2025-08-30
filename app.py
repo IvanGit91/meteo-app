@@ -1,0 +1,12 @@
+from flask.cli import FlaskGroup
+
+from app.server import create_app
+
+
+app = create_app()
+cli = FlaskGroup(create_app=create_app)
+
+if __name__ == "__main__":
+    cli()
+    # from waitress import serve
+    # serve(app, host='0.0.0.0', port=5000)

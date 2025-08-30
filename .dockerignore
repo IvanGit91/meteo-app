@@ -1,0 +1,8 @@
+# FOLDERS
+venv/
+docs/
+
+# FILES
+*Dockerfile*
+*docker-compose*
+#*.env*
