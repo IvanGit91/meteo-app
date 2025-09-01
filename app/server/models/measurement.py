@@ -9,13 +9,11 @@ class Measurement(db.Model, BaseModel, AuditModel):
     __tablename__ = 'measurements'
 
     id = db.Column(db.Integer, primary_key=True)
-    # A measurement can refer to a sensor or to a user forecast
-    sensor_id = db.Column(db.String(50), db.ForeignKey('sensors.sensor_id'), nullable=True)
-    forecast_at = db.Column(db.DateTime, nullable=False)
+    forecast_id = db.Column(db.Integer, db.ForeignKey('forecasts.id'), nullable=True)
     category_id = db.Column(db.Integer, db.ForeignKey('measurement_categories.id'), nullable=False)
     unit_id = db.Column(db.Integer, db.ForeignKey('measurement_units.id'), nullable=False)
     value = db.Column(db.Integer, nullable=False)
 
     __table_args__ = (
-        UniqueConstraint('forecast_at', 'category_id', 'unit_id', name='uq_forecast_category_unit'),
+        UniqueConstraint('forecast_id', 'category_id', 'unit_id', name='uq_forecast_category_unit'),
     )

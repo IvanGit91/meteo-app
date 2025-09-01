@@ -7,10 +7,7 @@ class MeasurementInfoSchema(Schema):
     unit = fields.String(required=True)
 
 class MeasurementSchema(Schema):
-    identifier = fields.String(required=True)
-    sensor = fields.String(required=True)
-    city = fields.String(required=True)
-    date = fields.DateTime(required=True)
+    forecast_id = fields.Integer(required=True)
     info = fields.Nested(MeasurementInfoSchema(), required=True)
 
     @post_load

@@ -3,7 +3,6 @@ from marshmallow import Schema, fields, post_load
 
 class ForecastSchema(Schema):
     sensor_id = fields.String(required=True)
-    city = fields.String(required=True)
     forecast_at = fields.DateTime(required=True)
     temperature_unit = fields.String(required=True)
     temperature_value = fields.Integer(required=True, validate=lambda n: n > 0)

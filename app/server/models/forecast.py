@@ -7,5 +7,5 @@ class Forecast(db.Model, BaseModel, AuditModel):
     __tablename__ = 'forecasts'
 
     id = db.Column(db.Integer, primary_key=True)
-    city = db.Column(db.String(100), nullable=False)
-    measurement_id = db.Column(db.Integer, db.ForeignKey('measurements.id'), nullable=False)
+    sensor_id = db.Column(db.String(50), db.ForeignKey('sensors.sensor_id'), nullable=True)
+    forecast_at = db.Column(db.DateTime, nullable=False)
